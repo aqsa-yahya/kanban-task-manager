@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanban Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="logo">📋</div>
+      <div>
+        <h1>Task Manager</h1>
+        <p class="subtitle">Kanban Board by Aqsa Muhammad Yahya</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="stat-box">
+        <span id="count-todo">0</span>
+        <label>To Do</label>
+      </div>
+      <div class="stat-box">
+        <span id="count-inprogress">0</span>
+        <label>In Progress</label>
+      </div>
+      <div class="stat-box">
+        <span id="count-done">0</span>
+        <label>Done</label>
+      </div>
+    </div>
+  </header>
+
+  <!-- ADD TASK BAR -->
+  <div class="add-task-bar">
+    <input type="text" id="task-input" placeholder="Write a new task and press Enter or click Add..." />
+    <select id="task-priority">
+      <option value="low">🟢 Low</option>
+      <option value="medium" selected>🟡 Medium</option>
+      <option value="high">🔴 High</option>
+    </select>
+    <select id="task-category">
+      <option value="general">General</option>
+      <option value="frontend">Frontend</option>
+      <option value="planning">Planning</option>
+      <option value="testing">Testing</option>
+    </select>
+    <button id="add-btn" onclick="addTask()">+ Add Task</button>
+  </div>
+
+  <!-- KANBAN BOARD -->
+  <main class="board">
+
+    <!-- TO DO COLUMN -->
+    <div class="column" id="col-todo">
+      <div class="column-header todo-header">
+        <div class="col-title">
+          <span class="col-dot todo-dot"></span>
+          To Do
+        </div>
+        <span class="col-count" id="badge-todo">0</span>
+      </div>
+      <div class="cards-container" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="empty-state" id="empty-todo">No tasks yet. Add one above! 👆</div>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS COLUMN -->
+    <div class="column" id="col-inprogress">
+      <div class="column-header inprogress-header">
+        <div class="col-title">
+          <span class="col-dot inprogress-dot"></span>
+          In Progress
+        </div>
+        <span class="col-count" id="badge-inprogress">0</span>
+      </div>
+      <div class="cards-container" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="empty-state" id="empty-inprogress">Drag tasks here when working 🚀</div>
+      </div>
+    </div>
+
+    <!-- DONE COLUMN -->
+    <div class="column" id="col-done">
+      <div class="column-header done-header">
+        <div class="col-title">
+          <span class="col-dot done-dot"></span>
+          Done
+        </div>
+        <span class="col-count" id="badge-done">0</span>
+      </div>
+      <div class="cards-container" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="empty-state" id="empty-done">Completed tasks appear here ✅</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Built with HTML, CSS & JavaScript · Managed with Jira & Confluence · By Aqsa Muhammad Yahya</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
